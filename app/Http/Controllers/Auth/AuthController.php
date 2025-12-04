@@ -64,6 +64,16 @@ class AuthController extends Controller
         return redirect()->route('dashboard.index')->with('success', 'Anda Berhasil Login.');
     }
 
+    public function storeLogout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login')->with('success', 'Anda berhasil logout.');
+    }
+
     public function indexRegister()
     {
         return view('Auth.register');

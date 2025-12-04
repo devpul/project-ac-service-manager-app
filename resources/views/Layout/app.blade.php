@@ -7,12 +7,29 @@
     <title>Dashboard</title>
     {{-- cdn tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
+
+    {{-- sweet alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat Datang "{{ Auth::user()->username }}"👋',
+                text: "{{ session(key: 'success') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
+
 
     <div class="min-h-screen flex justify-center items-center">
         @yield('content')
     </div>
+
 
 </body>
 </html>
