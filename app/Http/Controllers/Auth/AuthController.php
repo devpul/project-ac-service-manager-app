@@ -45,9 +45,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validated = $this->validateUser($request, 'register');
-        if (! is_array($validated)) return $validated;
-
-        
+        if (! is_array($validated)) return $validated;   
     }
 
     public function storeLogin(Request $request)
