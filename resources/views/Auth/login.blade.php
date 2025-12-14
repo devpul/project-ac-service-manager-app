@@ -24,7 +24,7 @@
 
                 <div class="flex flex-col text-sm">
                     <p class="">Don't have an account ? </p>
-                    <a href="{{ route('login') }}" class="text-blue-600">Sign up here</a>
+                    <a href="{{ route('register') }}" class="text-blue-600">Sign up here</a>
                 </div>
                 
             </div>

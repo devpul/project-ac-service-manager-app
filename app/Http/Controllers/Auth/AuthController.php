@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -14,15 +16,14 @@ class AuthController extends Controller
         try {
 
             $rulesRegister = [
-                'role_id'    => 'required|exists:roles,id',
-                'username'   => 'required|string|unique:users,username',
-                'fullname'   => 'required|string',
+                // 'role_id'    => 'required|exists:roles,id',
+                'username'   => 'required|string|unique:users,username|min:3',
+                // 'fullname'   => 'required|string',
                 'password'   => 'required|min:3|confirmed',
                 'email'      => 'required|email|unique:users,email',
                 'phone'      => [
                     'required',
                     'regex:/^[0-9]+$/',
-                    'string',
                     'unique:users,phone'
                 ],
             ];
@@ -37,15 +38,25 @@ class AuthController extends Controller
             if ($action === 'login')  return $request->validate($rulesLogin);
 
         } catch (ValidationException $e) {
+            $error = $e->validator;
             // return back()->with('error', 'Email atau password anda salah, silahkan coba lagi.');
-            return response()->json($e->getMessage());
+            return back()->withErrors($error);
         }
     }
 
-    public function register(Request $request)
+    public function storeRegister(Request $request)
     {
         $validated = $this->validateUser($request, 'register');
-        if (! is_array($validated)) return $validated;   
+        if (! is_array($validated)) return $validated;
+
+        $hashedPassword = Hash::make($validated['password']);
+
+        $user = User::create(array_merge($validated, [
+            'role_id'   =>  3, //user
+            'password'  => $hashedPassword
+        ]));
+
+        return redirect()->route('login')->with('success','Berhasil membuat akun.');
     }
 
     public function storeLogin(Request $request)

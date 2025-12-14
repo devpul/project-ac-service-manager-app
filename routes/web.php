@@ -4,6 +4,11 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
+Route::prefix('/register')->group(function() {
+    Route::get('/', [AuthController::class, 'indexRegister'])->name('register');
+    Route::post('/', [AuthController::class, 'storeRegister'])->name('register.store');
+});
+
 Route::get('/', [AuthController::class, 'indexLogin'])->name('login');
 Route::post('/', [AuthController::class, 'storeLogin'])->name('login.store');
 
