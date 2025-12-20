@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Toko;
 
-use App\Http\Controllers\Controller;
+use Services\PdfService;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
 
 class TokoController extends Controller
 {
@@ -20,5 +22,13 @@ class TokoController extends Controller
     public function edit()
     {
         return view('Toko.edit');
+    }
+
+    public function download(Request $request)
+    {
+        $filename = 'testing.pdf';
+        $html = '<h1>halo</h1>';
+
+        return PdfService::download($html, $filename);
     }
 }
