@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Kalender\KalenderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Toko\TokoController;
@@ -30,3 +31,9 @@ Route::middleware('auth')->prefix('toko')->group(function(){
     Route::post('/import/excel', [TokoController::class, 'importExcel'])->name('toko.import_excel');
     Route::delete('/destroy/{id}', [TokoController::class, 'destroy'])->name('toko.destroy');
 });
+
+Route::middleware('auth')->prefix('kalender')->group(function(){
+    Route::get('/', [KalenderController::class, 'view'])->name('kalender.view');
+    Route::get('/api/meetings', [KalenderController::class, 'index'])->name('kalender.index');
+});
+

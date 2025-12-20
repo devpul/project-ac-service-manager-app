@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class KalenderController extends Controller
 {
+    public function view()
+    {
+        return view('Kalender.index');
+    }
+    
     public function index()
     {
         $kalender = Kalender::get();
