@@ -29,7 +29,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Services/PdfService.php"
+            "app/Services/PdfService.php",
+            "app/Services/ExcelService.php",
+            "app/Services/ImportExcel.php"
         ]
     },
     "autoload-dev": {

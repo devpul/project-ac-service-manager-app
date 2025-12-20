@@ -24,5 +24,9 @@ Route::middleware('auth')->prefix('toko')->group(function(){
     Route::get('/', [TokoController::class, 'index'])->name('toko.index');
     Route::get('/create', [TokoController::class, 'create'])->name('toko.create');
     Route::get('/edit{id}', [TokoController::class, 'edit'])->name('toko.edit');
-    Route::get('/download/pdf', [TokoController::class, 'download'])->name('toko.download');
+    Route::put('/update/{id}', [TokoController::class, 'update'])->name('toko.update');
+    Route::get('/export/pdf', [TokoController::class, 'exportPdf'])->name('toko.export_pdf');
+    Route::get('/export/excel', [TokoController::class, 'exportExcel'])->name('toko.export_excel');
+    Route::post('/import/excel', [TokoController::class, 'importExcel'])->name('toko.import_excel');
+    Route::delete('/destroy/{id}', [TokoController::class, 'destroy'])->name('toko.destroy');
 });
