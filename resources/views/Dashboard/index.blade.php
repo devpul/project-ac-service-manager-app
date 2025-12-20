@@ -28,10 +28,11 @@
         width="150px">
         
         <div class="grid grid-cols-2 gap-5">
-            <h2 class="font-semibold bg-cyan-400 text-center p-10">Kalender</h2>
-            <h2 class="font-semibold bg-cyan-400 text-center p-10">Kalender</h2>
-            <h2 class="font-semibold bg-cyan-400 text-center p-10">Kalender</h2>
-            <h2 class="font-semibold bg-cyan-400 text-center p-10">Kalender</h2>
+            <a class="font-semibold bg-cyan-400 text-center p-10">Kalender</a>
+            <a href="{{ route('toko.index') }}"
+            class="font-semibold bg-cyan-400 text-center p-10">Daftar Toko</a>
+            <a class="font-semibold bg-cyan-400 text-center p-10">Kalender</a>
+            <a class="font-semibold bg-cyan-400 text-center p-10">Kalender</a>
         </div>
     </div>
 
