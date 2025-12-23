@@ -32,7 +32,8 @@
             class="font-semibold bg-cyan-400 text-center p-10">Kalender</a>
             <a href="{{ route('toko.index') }}"
             class="font-semibold bg-cyan-400 text-center p-10">Daftar Toko</a>
-            <a class="font-semibold bg-cyan-400 text-center p-10">Kalender</a>
+            <a href="{{ route('ac.index') }}" 
+            class="font-semibold bg-cyan-400 text-center p-10">Jenis & Tipe AC</a>
             <a class="font-semibold bg-cyan-400 text-center p-10">Kalender</a>
         </div>
     </div>
