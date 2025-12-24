@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\GajiKaryawan;
 
-use App\Http\Controllers\Controller;
+use App\Models\GajiKaryawan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GajiKaryawanController extends Controller
 {
     public function index()
-    {
-        return view('GajiKaryawan.index');
+    {   
+        // $karyawan = Auth::user()->id;
+
+        $gajis = GajiKaryawan::all();
+        return view('GajiKaryawan.index', compact('gajis'));
     }
 
     public function create()
