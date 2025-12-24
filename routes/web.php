@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Kalender\KalenderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AC\ACController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Toko\TokoController;
+use App\Http\Controllers\Kalender\KalenderController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\GajiKaryawan\GajiKaryawanController;
 
 Route::prefix('/register')->group(function() {
     Route::get('/', [AuthController::class, 'indexRegister'])->name('register');
@@ -43,3 +44,8 @@ Route::middleware('auth')->prefix('kalender')->group(function(){
     Route::get('/api/meetings', [KalenderController::class, 'index'])->name('kalender.index');
 });
 
+Route::middleware('auth')->prefix('gaji-karyawan')->group(function() {
+    Route::get('/', [GajiKaryawanController::class, 'index'])->name('gaji.index');
+    Route::get('/create', [GajiKaryawanController::class, 'create'])->name('gaji.create');
+    Route::get('/edit/{id}', [GajiKaryawanController::class, 'edit'])->name('gaji.edit');
+});
