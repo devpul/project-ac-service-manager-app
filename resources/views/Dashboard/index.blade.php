@@ -16,8 +16,9 @@
         </div>
         
         <ul class="p-3 space-y-4">
-            <li class="hover:bg-blue-500 transition">halo</li>
-            <li class="hover:bg-blue-500 transition">halo</li>
+            <li class="hover:bg-blue-500 transition">
+            <a href="{{ route('gaji.index') }}">Gaji Karyawan</a></li>
+            <li class="hover:bg-blue-500 transition">Ga</li>
             <li class="hover:bg-blue-500 transition">halo</li>
         </ul>
     </div>
