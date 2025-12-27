@@ -4,6 +4,9 @@
     <a href="{{ route('dashboard.index') }}"
     class="text-white font-semibold py-1 px-3 bg-red-500 rounded">Kembali</a>
 
+    <a href="{{ route('gaji.create') }}"
+    class="text-white font-semibold py-1 px-3 bg-blue-500 rounded">Tambah Detail Gaji</a>
+
     <h1 class="text-2xl font-bold underline">Gaji Karyawan</h1>
     <br>
     <table border="1" class="border" cellpadding="12">
@@ -41,8 +44,8 @@
             </tr>
 
             <tr>
-                <th class="text-left">Tunjangan Jabatan</th>
-                <td>Rp {{ number_format($gaji->gaji_pokok, 0, ',', '.') }}</td>
+                <th class="text-left">Tunjangan PPH</th>
+                <td>Rp {{ number_format($gaji->tunjangan_pph, 0, ',', '.') }}</td>
             </tr>
 
             <tr class="border">

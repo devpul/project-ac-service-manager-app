@@ -9,6 +9,8 @@ class GajiKaryawan extends Model
     protected $table = 'gaji_karyawans';
 
     protected $fillable = [
+        'user_id',
+
         // pendapatan
         'gaji_pokok',
         'tunjangan_jabatan',
@@ -20,6 +22,7 @@ class GajiKaryawan extends Model
         'potongan_pph',
 
         'jumlah_pendapatan',
-        'jumlah_potongan'
+        'jumlah_potongan',
+        'gaji_bersih_diterima'
     ];
 }

@@ -47,5 +47,6 @@ Route::middleware('auth')->prefix('kalender')->group(function(){
 Route::middleware('auth')->prefix('gaji-karyawan')->group(function() {
     Route::get('/', [GajiKaryawanController::class, 'index'])->name('gaji.index');
     Route::get('/create', [GajiKaryawanController::class, 'create'])->name('gaji.create');
+    Route::post('/', [GajiKaryawanController::class, 'store'])->name('gaji.store');
     Route::get('/edit/{id}', [GajiKaryawanController::class, 'edit'])->name('gaji.edit');
 });

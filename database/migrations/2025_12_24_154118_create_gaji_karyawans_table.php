@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('gaji_karyawans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')
+                    ->on('users')->onUpdate('cascade')->onDelete('set null');
             $table->decimal('gaji_pokok', 10, 2)->nullable();
             $table->decimal('tunjangan_jabatan', 10, 2)->nullable();
             $table->decimal('tunjangan_daerah', 10, 2)->nullable();
@@ -21,6 +24,7 @@ return new class extends Migration
             $table->decimal('potongan_pph', 10, 2)->nullable();
             $table->decimal('jumlah_pendapatan', 10, 2)->nullable();
             $table->decimal('jumlah_potongan', 10, 2)->nullable();
+            $table->decimal('gaji_bersih_diterima', 10, 2)->nullable();
             $table->timestamps();
         });
     }
