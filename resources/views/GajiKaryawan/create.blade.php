@@ -1,7 +1,10 @@
 @extends('layout.app')
 
 @section('content')
-    <h1>GAJI</h1>
+    <a href="{{ route('gaji.index') }}"
+        class="text-white font-semibold py-1 px-3 bg-red-500 rounded">Kembali</a>
+    
+        <h1>GAJI</h1>
 
     <form action="{{ route('gaji.store') }}" method="POST"
         class="p-10 shadow flex flex-col gap-y-5">
