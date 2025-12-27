@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('satuan')->nullable();
             $table->decimal('harga_satuan', 10, 2)->nullable();
             $table->decimal('jumlah_harga', 10, 2)->nullable();
+            $table->text('lokasi')->nullable();
         });
     }
 

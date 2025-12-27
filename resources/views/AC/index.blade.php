@@ -15,6 +15,7 @@
                 <th class="py-1 px-2">Satuan</th>
                 <th class="py-1 px-2">Harga Satuan</th>
                 <th class="py-1 px-2">Jumlah Harga</th>
+                <th class="py-1 px-2">Lokasi</th>
                 <th class="py-1 px-2">Aksi</th>
             </tr>
 
@@ -27,6 +28,7 @@
                     <td>{{ $ac->satuan }}</td>
                     <td>{{ $ac->harga_satuan }}</td>
                     <td>{{ $ac->jumlah_harga }}</td>
+                    <td>{{ $ac->lokasi }}</td>
                     <td>
                         <form action="{{ route('ac.destroy', $ac->id) }}" method="POST">
                             @csrf
