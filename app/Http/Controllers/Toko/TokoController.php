@@ -55,6 +55,17 @@ class TokoController extends Controller
         }
     }
 
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'file'  =>  'required|mimes:xlsx,xls|max:2048'
+        ]);
+
+        Excel::import(new ImportExcel, $request->file);
+        
+        return back()->with('success', 'Import berhasil');
+    }
+
     public function store(Request $request)
     {
         $validatedData = $this->validateToko($request, 'storeToko');
@@ -116,16 +127,5 @@ class TokoController extends Controller
         $filename = 'laporan.xlsx';
 
         return Excel::download(new ExceLService, $filename);
-    }
-
-    public function importExcel(Request $request)
-    {
-        $request->validate([
-            'file'  =>  'required|mimes:xlsx,xls|max:2048'
-        ]);
-
-        Excel::import(new ImportExcel, $request->file);
-        
-        return back()->with('success', 'Import berhasil');
     }
 }

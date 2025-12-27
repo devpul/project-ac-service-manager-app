@@ -26,7 +26,9 @@ Route::middleware('auth')->prefix('dashboard')->group(function() {
 Route::middleware('auth')->prefix('jenis-dan-tipe-ac')->group(function(){
     Route::get('/', [ACController::class, 'index'])->name('ac.index');
     Route::get('/create', [ACController::class, 'create'])->name('ac.create');
+    Route::post('/import', [ACController::class, 'import'])->name('ac.import');
     Route::get('/edit/{id}', [ACController::class, 'edit'])->name('ac.edit');
+    Route::delete('/{id}', [ACController::class, 'destroy'])->name('ac.destroy');
 });
 Route::middleware('auth')->prefix('toko')->group(function(){
     Route::get('/', [TokoController::class, 'index'])->name('toko.index');
