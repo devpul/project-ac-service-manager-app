@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DetailAkun\DetailAkunController;
+use App\Http\Controllers\MaterialService\MaterialServiceController;
+use App\Models\MaterialService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AC\ACController;
 use App\Http\Controllers\Auth\AuthController;
@@ -56,4 +58,8 @@ Route::middleware('auth')->prefix('gaji-karyawan')->group(function() {
 
 Route::middleware('auth')->prefix('detail-akun')->group(function() {
     Route::get('/', [DetailAkunController::class, 'index'])->name('detail.index');
+});
+
+Route::middleware('auth')->prefix('material-service')->group(function(){
+    Route::get('/', [MaterialServiceController::class, 'index'])->name('material.index');
 });
