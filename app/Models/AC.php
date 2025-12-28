@@ -13,6 +13,7 @@ class AC extends Model
         'satuan',
         'harga_satuan',
         'jumlah_harga',
+        'lokasi'
     ];
 
     public $timestamps = false;
