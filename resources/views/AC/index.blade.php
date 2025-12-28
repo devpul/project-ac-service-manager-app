@@ -2,65 +2,57 @@
 
 @section('content')
     
-    <div class="flex flex-col gap-y-10 ">
-        <a href="{{ route('dashboard.index') }}"
-        class="text-white font-semibold rounded py-1 px-3 bg-red-500">Kembali</a>
+    <div class="flex flex-col gap-y-10 w-[90%] mx-auto">    
+        {{-- judul --}}
+        <h1 class="text-center font-bold text-2xl">Jenis dan Tipe AC</h1>
 
-        <h1 class="pb-5 text-center font-bold text-2xl">Jenis dan Tipe AC</h1>
+        {{-- btn kembali --}}
+        <div class="flex justify-start">
+            <a href="{{ route('dashboard.index') }}"
+            class="bg-red-500 font-semibold text-white px-3 py-1 ">Kembali</a>
+        </div>
 
-        <table cellpadding="8">
-            <tr class="border">
-                <th class="py-1 px-2">No</th>
-                <th class="py-1 px-2">Nama Barang</th>
-                <th class="py-1 px-2">Satuan</th>
-                <th class="py-1 px-2">Harga Satuan</th>
-                <th class="py-1 px-2">Jumlah Harga</th>
-                <th class="py-1 px-2">Lokasi</th>
-                <th class="py-1 px-2">Aksi</th>
-            </tr>
-
-            @php $no = 1 @endphp
-
-            @forelse ($acs as $ac)
-                <tr class="border">
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $ac->nama_barang }}</td>
-                    <td>{{ $ac->satuan }}</td>
-                    <td>{{ $ac->harga_satuan }}</td>
-                    <td>{{ $ac->jumlah_harga }}</td>
-                    <td>{{ $ac->lokasi }}</td>
-                    <td>
-                        <form action="{{ route('ac.destroy', $ac->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-
+        {{-- header --}}
+        <div class="flex justify-start">
+                <div class="flex justify-center items-center">
+                    <form action="{{ route('ac.import') }}" method="POST"
+                    enctype="multipart/form-data"
+                    class="rounded py-1 px-3 shadow">
+                        @csrf
+                        <div class="flex justify-between">
+                            <input type="file" name="file" required class="py-2">
                             <button type="submit"
-                            class="text-white font-semibold rounded py-1 px-3 bg-red-500">Hapus</button>
+                            class="bg-green-500 py-1 px-3 text-white font-semibold">
+                            Import</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
 
-                        </form>
-                    </td>
-                </tr> 
-            @empty
-                <tr class="text-center">
-                    <td colspan="5">Jenis dan Tipe AC tidak ditemukan. </td>
-                </tr>
-            @endforelse
-            
-        </table>
+        {{-- cards --}}
+        <div class="flex flex-col gap-y-10">
+                @forelse ($acs as $ac)
+                    <div class="flex flex-col gap-y-2 shadow p-10 rounded-xl bg-blue-400 text-white">
+                        <h2 class="text-xl font-bold mb-5">📦 {{ $ac->nama_barang }}</h2>
+                        <h2 class="text-lg font-semibold">⚙ Store Type: {{ $ac->satuan }}</h2>                            
+                        <h2 class="text-lg font-semibold">💰 Harga Satuan:  Rp {{ number_format($ac->harga_satuan, 2, ',', '.')}}</h2>                            
+                        <h2 class="text-lg font-semibold">💰 Jumlah Harga: Rp {{ number_format($ac->jumlah_harga, 2, ',', '.')}}</h2>                            
+                        <h2 class="text-lg font-semibold">🗺 {{ $ac->lokasi }}</h2>                            
+                            <div class="flex justify-center gap-x-3 items-center mt-5">
+                                <a type="submit" href="{{ route('toko.edit',  $ac->id ) }}"
+                                class="bg-yellow-500 text-black px-3 py-1 rounded-lg font-semibold">Edit</a>
+                                <form action="{{ route('toko.destroy', $ac->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
 
-        <form action="{{ route('ac.import') }}" method="POST"
-        enctype="multipart/form-data"
-        class="rounded py-1 px-3 shadow">
-            @csrf
-
-            <div class="flex justify-between">
-                <input type="file" name="file" required>
-
-                <button type="submit"
-                class="rounded py-1 px-3 text-green-500 border border-green-500 font-bold">
-                Import Excel</button>
-            </div>
-            
-        </form>
+                                    <button type="submit" onclick="return confirm('Kamu yakin menghapus toko ini?')"
+                                    class="bg-red-500 text-white px-3 py-1 rounded-lg font-semibold">Hapus</button>
+                                </form>
+                            </div>
+                    </div>
+                @empty
+                    <h2>Tidak ditemukan</h2>
+                @endforelse
+        </div>
     </div>
 @endsection

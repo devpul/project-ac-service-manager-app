@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DetailAkun\DetailAkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AC\ACController;
 use App\Http\Controllers\Auth\AuthController;
@@ -51,4 +52,8 @@ Route::middleware('auth')->prefix('gaji-karyawan')->group(function() {
     Route::get('/create', [GajiKaryawanController::class, 'create'])->name('gaji.create');
     Route::post('/', [GajiKaryawanController::class, 'store'])->name('gaji.store');
     Route::get('/edit/{id}', [GajiKaryawanController::class, 'edit'])->name('gaji.edit');
+});
+
+Route::middleware('auth')->prefix('detail-akun')->group(function() {
+    Route::get('/', [DetailAkunController::class, 'index'])->name('detail.index');
 });

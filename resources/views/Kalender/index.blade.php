@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <div class="flex flex-col gap-y-10">
+    <div class="flex flex-col gap-y-10 w-[100%] mx-auto">
         <a href="{{ route('dashboard.index') }}"
         class="bg-red-500 text-white font-semibold px-3 py-1">
             Kembali

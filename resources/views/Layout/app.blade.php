@@ -71,7 +71,6 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Selamat Datang "{{ Auth::user()->username }}"👋',
                 text: "{{ session(key: 'success') }}",
                 showConfirmButton: false,
                 timer: 3000
