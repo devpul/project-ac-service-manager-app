@@ -55,7 +55,8 @@
             class="bg-cyan-400 hover:bg-cyan-500 text-center p-10 text-white rounded-xl text-xl font-bold">🏬<br> Daftar Toko</a>
             <a href="{{ route('ac.index') }}" 
             class="bg-cyan-400 hover:bg-cyan-500 text-center p-10 text-white rounded-xl text-xl font-bold">🎨<br> Jenis & Tipe AC</a>
-            <a class="bg-cyan-400 hover:bg-cyan-500 text-center p-10 text-white rounded-xl text-xl font-bold">🧰<br>Material Service</a>
+            <a href="{{ route('material.index') }}"
+            class="bg-cyan-400 hover:bg-cyan-500 text-center p-10 text-white rounded-xl text-xl font-bold">🧰<br>Material Service</a>
         </div>
     </div>
 
