@@ -62,4 +62,7 @@ Route::middleware('auth')->prefix('detail-akun')->group(function() {
 
 Route::middleware('auth')->prefix('material-service')->group(function(){
     Route::get('/', [MaterialServiceController::class, 'index'])->name('material.index');
+    Route::get('/{id}', [MaterialServiceController::class, 'edit'])->name('material.edit');
+    Route::put('/{id}', [MaterialServiceController::class, 'update'])->name('material.update');
+    Route::delete('/{id}', [MaterialServiceController::class, 'destroy'])->name('material.destroy');
 });

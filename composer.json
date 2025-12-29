@@ -32,7 +32,8 @@
             "app/Services/PdfService.php",
             "app/Services/ExcelService.php",
             "app/Services/ImportExcel.php",
-            "app/Services/AC/ACImportExcel.php"
+            "app/Services/AC/ACImportExcel.php",
+            "app/Services/MaterialService/MaterialServiceImportExcel.php"
         ]
     },
     "autoload-dev": {

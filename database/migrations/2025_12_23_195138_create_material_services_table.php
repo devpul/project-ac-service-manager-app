@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('material_services', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nama_barang')->nullable();
+            $table->integer('jumlah_barang')->nullable();
+            $table->string('nama_toko')->nullable();
+            $table->string('nama_pic')->nullable();
+            $table->string('pic_telepon')->nullable();
+            $table->date('jadwal_visit')->nullable();
         });
     }
 
