@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\DetailAkun\DetailAkunController;
-use App\Http\Controllers\MaterialService\MaterialServiceController;
 use App\Models\MaterialService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AC\ACController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Toko\TokoController;
 use App\Http\Controllers\Kalender\KalenderController;
+use App\Http\Controllers\Karyawan\KaryawanController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\DetailAkun\DetailAkunController;
 use App\Http\Controllers\GajiKaryawan\GajiKaryawanController;
+use App\Http\Controllers\MaterialService\MaterialServiceController;
 
 Route::prefix('/register')->group(function() {
     Route::get('/', [AuthController::class, 'indexRegister'])->name('register');
@@ -65,4 +66,8 @@ Route::middleware('auth')->prefix('material-service')->group(function(){
     Route::get('/{id}', [MaterialServiceController::class, 'edit'])->name('material.edit');
     Route::put('/{id}', [MaterialServiceController::class, 'update'])->name('material.update');
     Route::delete('/{id}', [MaterialServiceController::class, 'destroy'])->name('material.destroy');
+});
+
+Route::middleware('auth')->prefix('manajemen-user')->group(function() {
+    Route::get('/', [KaryawanController::class, 'index'])->name('karyawan.index');
 });
