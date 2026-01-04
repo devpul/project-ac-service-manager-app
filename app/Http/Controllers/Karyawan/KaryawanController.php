@@ -21,4 +21,9 @@ class KaryawanController extends Controller
         
         return view('ManajemenUser.index', compact('karyawans'));
     }
+
+    public function create()
+    {   
+        return view('ManajemenUser.import');
+    }
 }

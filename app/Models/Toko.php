@@ -10,7 +10,7 @@ class Toko extends Model
 
     protected $fillable = [
         'site',
-        'site_description',
+        'site_descr',
         'store_type',
         'go_date',
         'province',

@@ -21,6 +21,23 @@ class ACController extends Controller
         return redirect()->route('ac.index')->with('success', 'Berhasil menyimpan data ac');
     }
 
+    public function update(Request $request, $id)
+    {
+        $ac = AC::find($id);
+
+        $request->validate([
+            'nama_barang'       =>  'sometimes',
+            'satuan'            =>  'sometimes',
+            'harga_satuan'      =>  'sometimes',
+            'jumlah_harga'      =>  'sometimes',
+            'lokasi'            =>  'sometimes',
+        ]);
+
+        $ac->update($request->all());
+
+        return redirect()->route('ac.index')->with('success', 'Berhasil memperbarui data AC.');
+    }
+
     public function destroy($id)
     {
         $ac = AC::find($id);
@@ -38,11 +55,12 @@ class ACController extends Controller
 
     public function create()
     {
-        return view('AC.create');
+        return view('AC.import');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('AC.edit');
+        $ac = AC::find($id);
+        return view('AC.edit', compact('ac'));
     }
 }

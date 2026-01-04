@@ -51,6 +51,11 @@ class MaterialServiceController extends Controller
         return view('MaterialService.index', ['materials' => $material_services]);
     }
 
+    public function create()
+    {   
+        return view('MaterialService.import');
+    }
+
     public function edit($id)
     {
         $material_service = MaterialService::find($id);
