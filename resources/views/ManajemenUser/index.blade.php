@@ -17,7 +17,7 @@
 
             {{-- Judul Halaman --}}
             <div class="flex justify-between w-full">
-                <h1 class="text-3xl font-bold text-gray-800">Manajemen User</h1>
+                <h1 class="text-3xl font-bold text-gray-800">Daftar Karyawan</h1>
                 <a href="{{ route('karyawan.create') }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-4 rounded-full shadow transition duration-300">
                     Import
                 </a>
