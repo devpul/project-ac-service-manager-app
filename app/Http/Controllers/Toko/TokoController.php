@@ -63,7 +63,7 @@ class TokoController extends Controller
 
         Excel::import(new ImportExcel, $request->file);
         
-        return back()->with('success', 'Import berhasil');
+        return redirect()->route('toko.index')->with('success', 'Import berhasil');
     }
 
     public function store(Request $request)

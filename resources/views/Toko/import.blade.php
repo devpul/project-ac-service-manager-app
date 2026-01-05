@@ -13,7 +13,7 @@
                 Kembali ke Daftar Toko
             </a>
 
-        <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <form action="{{ route('toko.import') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
@@ -25,7 +25,7 @@
                         </svg>
                     </div>
                         
-                    <h3 class="text-sm font-bold text-gray-700">Uploada Data Material</h3>
+                    <h3 class="text-sm font-bold text-gray-700">Uploada Data Toko</h3>
                     <p class="text-xs text-gray-400 mt-1 mb-4 text-center">Klik atau drag file Excel ke sini</p>
                         
                     <input type="file" name="file" required
