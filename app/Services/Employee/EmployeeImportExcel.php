@@ -13,22 +13,35 @@ class EmployeeImport implements OnEachRow, WithHeadingRow
     {
         $data = $row->toArray();
 
-        $user = User::firstOrCreate(
-            ['email' => $data['email']],
-            [
-                'name' => $data['name'],
-                'password' => Hash::make('default')
-            ]
-        );
+        $user = User::firstOrCreate(['email' => $data['email']], 
+        [
+            'username'  =>  $data['username'],
+            'password'  =>  $data['password'],
+            'email'     =>  $data['email'],
+        ]);
 
-        Karyawan::updateOrCreate(
-            ['user_id' => $user->id],
-            [
-                'nama_karyawan' => $data['nama'],
-                'tugas_karyawan' => $data['tugas'],
-                'absen' => null,
-                'jadwal_karyawan' => $data['jadwal']
-            ]
-        );
+        $karyawan = Karyawan::updateOrCreate([
+
+        ]);
+
+
+
+        // $user = User::firstOrCreate(
+        //     ['email' => $data['email']],
+        //     [
+        //         'name' => $data['name'],
+        //         'password' => Hash::make('default')
+        //     ]
+        // );
+
+        // Karyawan::updateOrCreate(
+        //     ['user_id' => $user->id],
+        //     [
+        //         'nama_karyawan' => $data['nama'],
+        //         'tugas_karyawan' => $data['tugas'],
+        //         'absen' => null,
+        //         'jadwal_karyawan' => $data['jadwal']
+        //     ]
+        // );
     }
 }

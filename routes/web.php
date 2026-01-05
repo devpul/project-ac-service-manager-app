@@ -42,7 +42,7 @@ Route::middleware('auth')->prefix('toko')->group(function(){
     Route::put('/update/{id}', [TokoController::class, 'update'])->name('toko.update');
     Route::get('/export/pdf', [TokoController::class, 'exportPdf'])->name('toko.export_pdf');
     Route::get('/export/excel', [TokoController::class, 'exportExcel'])->name('toko.export_excel');
-    Route::post('/import/excel', [TokoController::class, 'importExcel'])->name('toko.import_excel');
+    Route::post('/import/excel', [TokoController::class, 'importExcel'])->name('toko.import');
     Route::delete('/destroy/{id}', [TokoController::class, 'destroy'])->name('toko.destroy');
 });
 
@@ -60,6 +60,7 @@ Route::middleware('auth')->prefix('gaji-karyawan')->group(function() {
 
 Route::middleware('auth')->prefix('detail-akun')->group(function() {
     Route::get('/', [DetailAkunController::class, 'index'])->name('detail.index');
+    Route::put('/', [DetailAkunController::class, 'update'])->name('detail.update');
 });
 
 Route::middleware('auth')->prefix('material-service')->group(function(){

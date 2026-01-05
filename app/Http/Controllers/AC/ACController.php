@@ -18,7 +18,7 @@ class ACController extends Controller
 
         Excel::import(new ACImportExcel, $request->file);
 
-        return redirect()->route('ac.index')->with('success', 'Berhasil menyimpan data ac');
+        return redirect()->route('ac.index')->with('success', 'Berhasil menyimpan data AC');
     }
 
     public function update(Request $request, $id)

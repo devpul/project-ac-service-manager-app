@@ -36,11 +36,11 @@
 
                         <div class="grid grid-cols-2 p-5 border-b border-gray-200">
                             <div class="space-y-1">
-                                <span class="block font-semibold text-sm text-gray-500">📅 JADWAL</span>
+                                <span class="block font-semibold text-sm text-gray-500">📅 TANGGAL</span>
                                 <span class="block font-semibold text-sm text-justify"> {{ $karyawan->jadwal_karyawan->format('d M Y') }}</span>
                             </div>
                             <div class="space-y-1">
-                                <span class="block font-semibold text-sm text-gray-500">⏲ JADWAL</span>
+                                <span class="block font-semibold text-sm text-gray-500">⏲ JAM MULAI</span>
                                 <span class="block font-semibold text-sm text-justify">{{ $karyawan->jadwal_karyawan->format('H.i') }} WIB</span>
                             </div>
                             

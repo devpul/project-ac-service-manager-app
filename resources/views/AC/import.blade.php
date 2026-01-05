@@ -2,7 +2,17 @@
 
 @section('content')
     <div class="w-full max-w-md mx-auto mb-10">
-        <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
+         <a href="{{ route('ac.index') }}" 
+               class="group inline-flex w-full items-center gap-x-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium text-sm">
+                {{-- Ikon Panah Kiri SVG --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
+                     class=" w-5 h-5 group-hover:-translate-x-1 transition-transform duration-200">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                Kembali ke Jenis dan Tipe AC
+            </a>
+
+        <form action="{{ route('ac.import') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
@@ -14,7 +24,7 @@
                         </svg>
                     </div>
                         
-                    <h3 class="text-sm font-bold text-gray-700">Upload Data Material</h3>
+                    <h3 class="text-sm font-bold text-gray-700">Upload Data Jenis & Tipe AC</h3>
                     <p class="text-xs text-gray-400 mt-1 mb-4 text-center">Klik atau drag file Excel ke sini</p>
                         
                     <input type="file" name="file" required
