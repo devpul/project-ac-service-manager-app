@@ -21,4 +21,17 @@ class KaryawanController extends Controller
         
         return view('ManajemenUser.index', compact('karyawans'));
     }
+
+    public function create()
+    {   
+        return view('ManajemenUser.import');
+    }
+
+    public function edit($id)
+    {
+        $karyawan = Karyawan::with(['user'])->find($id);
+        if (!$karyawan) return back()->with('error', 'Karyawan tidak ditemukan.');
+
+        return view('ManajemenUser.edit', compact('karyawan'));
+    }
 }

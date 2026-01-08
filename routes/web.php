@@ -70,4 +70,6 @@ Route::middleware('auth')->prefix('material-service')->group(function(){
 
 Route::middleware('auth')->prefix('manajemen-user')->group(function() {
     Route::get('/', [KaryawanController::class, 'index'])->name('karyawan.index');
+    Route::get('/create', [KaryawanController::class, 'create'])->name('karyawan.create');
+    Route::get('/edit/{id}', [KaryawanController::class, 'edit'])->name('karyawan.edit');
 });

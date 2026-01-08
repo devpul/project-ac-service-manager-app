@@ -15,6 +15,7 @@
 
             <h1 class="text-3xl font-bold text-slate-700">MANAJEMEN USER</h1>
 
+<<<<<<< Updated upstream
             <span class="hidden md:block w-[150px]"></span>
         </div>
        
@@ -32,13 +33,16 @@
             class="bg-green-100 border text-green-500 px-3 py-1 rounded-full">Import</button>
         </form>
 
+=======
+>>>>>>> Stashed changes
         {{-- cards --}}
         <div class="space-y-5">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
                 @forelse ($karyawans as $karyawan)
                     <div class="overflow-hidden flex flex-col bg-white rounded-xl shadow border border-gray-200">
-                        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 p-5">
+                        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 p-5 flex justify-between">
                             <span class="text-xl text-white font-bold">👨‍💼 {{ $karyawan->nama_karyawan }}</span>
+                            <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="text-black font-semibold bg-yellow-500 px-2 py-1 rounded">Edit</a>
                         </div>
 
                         <div class="grid grid-cols-2 p-5 border-b border-gray-200">
@@ -57,8 +61,6 @@
                             <span class="block font-semibold text-sm text-gray-500">TUGAS</span>
                             <span class="block  text-md italic text-justify">{{ $karyawan->tugas_karyawan }}</span>
                         </div>
-
-                        
                         
                         <div class="grid grid-cols-2 p-5 gap-x-3 items-center bg-gray-100">
                             <div class="">

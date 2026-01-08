@@ -43,9 +43,10 @@ class GajiKaryawanController extends Controller
     {   
         $userId = Auth::user()->id;
 
-        $gajis = GajiKaryawan::where('user_id', $userId)->get();
-
-        return view('GajiKaryawan.index', compact('gajis'));
+        $gaji = GajiKaryawan::where('karyawan_id', $userId)->first();
+        if (!$gaji) return back()->with('error', 'Gaji karyawan tidak ditemukan.');
+ 
+        return view('GajiKaryawan.index', compact('gaji'));
     }
 
     public function create()
