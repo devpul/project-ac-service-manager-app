@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Karyawan;
 use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -26,5 +27,10 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function karyawan()
+    {
+        return $this->hasOne(Karyawan::class, 'user_id');
     }
 }

@@ -4,6 +4,7 @@
     <div class="flex flex-col gap-y-10 mx-auto w-[90%]">
 
         <div class="flex flex-col justify-between items-start md:items-center gap-4 my-2 w-full mx-auto">
+            
             {{-- Tombol Kembali (Style Baru: Minimalis & Pakai Ikon) --}}
             <a href="{{ route('dashboard.index') }}" 
                class="group inline-flex w-full items-center gap-x-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium text-sm">
@@ -23,15 +24,19 @@
                 </a>
             </div>
         </div>
+       
 
-
+        {{-- form import --}}
+        <form action="{{ route('karyawan.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
         {{-- cards --}}
         <div class="space-y-5">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
                 @forelse ($karyawans as $karyawan)
                     <div class="overflow-hidden flex flex-col bg-white rounded-xl shadow border border-gray-200">
-                        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 p-5">
-                            <span class="text-xl text-white font-bold">👨‍💼 {{ $karyawan->nama_karyawan }}</span>
+                        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 p-5 flex justify-between">
+                            <span class="text-xl text-white font-bold">👨‍💼 {{ $karyawan->user->username }}</span>
+                            <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="text-black font-semibold bg-yellow-500 px-2 py-1 rounded">Edit</a>
                         </div>
 
                         <div class="grid grid-cols-2 p-5 border-b border-gray-200">
@@ -50,8 +55,6 @@
                             <span class="block font-semibold text-sm text-gray-500">📝 TUGAS</span>
                             <span class="block  text-md italic text-justify">{{ $karyawan->tugas_karyawan }}</span>
                         </div>
-
-                        
                         
                         <div class="grid grid-cols-2 p-5 gap-x-3 items-center bg-gray-100">
                             <div class="">
@@ -67,10 +70,14 @@
                                     <span href=""
                                     class="block text-sm text-center font-semibold text-white bg-orange-500 border rounded-full  py-2">
                                     {{ $karyawan->absen }}</span>
-                                @else
+                                @elseif ($karyawan->absen === 'ALPA')
                                     <span href=""
                                     class="block text-sm text-center font-semibold text-white bg-red-500 border rounded-full  py-2">
                                     {{ $karyawan->absen }}</span>
+                                @else
+                                    <span href=""
+                                    class="block text-sm text-center font-semibold text-white bg-gray-500 border rounded-full  py-2">
+                                    NULL</span>
                                 @endif
                                 
                             </div>

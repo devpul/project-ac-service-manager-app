@@ -1,47 +1,43 @@
 <?php
 
-use App\Models\Karyawan;
+namespace App\Services\Employee;
+
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Karyawan;
 use Maatwebsite\Excel\Row;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\OnEachRow;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class EmployeeImport implements OnEachRow, WithHeadingRow
+class EmployeeImportExcel implements OnEachRow, WithHeadingRow
 {
     public function onRow(Row $row)
     {
         $data = $row->toArray();
 
-        $user = User::firstOrCreate(['email' => $data['email']], 
-        [
-            'username'  =>  $data['username'],
-            'password'  =>  $data['password'],
-            'email'     =>  $data['email'],
-        ]);
+        $username = $data['username'];
+        $email    = $data['email'];
+        $tugas    = $data['tugas'];
+        $jadwal   = Date::excelToDateTimeObject($data['jadwal'])
+                        ->format('Y-m-d H:i');
 
-        $karyawan = Karyawan::updateOrCreate([
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            [
+                'role_id'   =>  3,
+                'username' => $username,
+                'password' => Hash::make('default'),
+            ]
+        );
 
-        ]);
-
-
-
-        // $user = User::firstOrCreate(
-        //     ['email' => $data['email']],
-        //     [
-        //         'name' => $data['name'],
-        //         'password' => Hash::make('default')
-        //     ]
-        // );
-
-        // Karyawan::updateOrCreate(
-        //     ['user_id' => $user->id],
-        //     [
-        //         'nama_karyawan' => $data['nama'],
-        //         'tugas_karyawan' => $data['tugas'],
-        //         'absen' => null,
-        //         'jadwal_karyawan' => $data['jadwal']
-        //     ]
-        // );
+        Karyawan::updateOrCreate(
+            ['user_id' => $user->id],
+            [
+                'tugas_karyawan'  => $tugas,
+                'absen'           => null,
+                'jadwal_karyawan' => $jadwal
+            ]
+        );
     }
 }

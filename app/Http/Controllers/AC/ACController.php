@@ -6,6 +6,7 @@ use App\Models\AC;
 use Services\ACImportExcel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ACController extends Controller
@@ -48,7 +49,10 @@ class ACController extends Controller
     }
 
     public function index()
-    {
+    {   
+        $karyawan = Auth::user()->role_id == 3;
+        if ($karyawan) return back()->with('error', 'Anda tidak punya akses.');
+
         $acs = AC::get();
         return view('AC.index', compact('acs'));
     }

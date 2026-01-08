@@ -20,7 +20,7 @@ class MaterialServiceImportExcel implements ToModel, WithHeadingRow
             'nama_pic'          => $row['nama_pic'],
             'pic_telepon'       => $row['pic_telepon'],
             'jadwal_visit'      =>  Date::excelToDateTimeObject($row['jadwal_visit'])
-                                    ->format('Y-m-d'),
+                                    ->format('Y-m-d H:i'),
         ]);
     }
 }

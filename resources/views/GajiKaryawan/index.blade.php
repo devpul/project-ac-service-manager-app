@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-bold underline text-center">Gaji Karyawan</h1>
 
         <div class="flex justify-between">
-            <a href="{{ route('dashboard.index') }}"
+            <a href="{{ route('karyawan.index') }}"
             class="text-white font-semibold py-2 px-4 bg-red-500 rounded">Kembali</a>
         
             <a href="{{ route('gaji.create') }}"
@@ -22,7 +22,6 @@
                 <th colspan="2">Potongan</th>
             </tr>
             
-            @forelse ($gajis as $gaji)
                 <tr>
                     <th class="text-left">Gaji Pokok</th>
                     <td>Rp {{ number_format($gaji->gaji_pokok, 0, ',', '.') }}</td>
@@ -56,9 +55,6 @@
                     <th colspan="3">Gaji Bersih Diterima</th>
                     <td>11.477.500</td>
                 </tr>
-            @empty
-                <td>Gaji Karyawan tidak ditemukan.</td>
-            @endforelse
         </table>
     </div>
 @endsection
