@@ -70,10 +70,14 @@
                                     <span href=""
                                     class="block text-sm text-center font-semibold text-white bg-orange-500 border rounded-full  py-2">
                                     {{ $karyawan->absen }}</span>
-                                @else
+                                @elseif ($karyawan->absen === 'ALPA')
                                     <span href=""
                                     class="block text-sm text-center font-semibold text-white bg-red-500 border rounded-full  py-2">
                                     {{ $karyawan->absen }}</span>
+                                @else
+                                    <span href=""
+                                    class="block text-sm text-center font-semibold text-white bg-gray-500 border rounded-full  py-2">
+                                    NULL</span>
                                 @endif
                                 
                             </div>

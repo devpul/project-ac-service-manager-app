@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Toko;
 
 use App\Models\Toko;
-use GrahamCampbell\ResultType\Success;
 use Services\PdfService;
 use Services\ImportExcel;
 use Services\ExcelService;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 use Maatwebsite\Excel\Facades\Excel;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Validation\ValidationException;
 
 class TokoController extends Controller
@@ -98,6 +99,9 @@ class TokoController extends Controller
 
     public function index()
     {
+        $karyawan = Auth::user()->role_id == 3;
+        if ($karyawan) return back()->with('error', 'Anda tidak punya akses.');
+            
         $tokos = Toko::all();
         return view('Toko.index', compact('tokos'));
     }
