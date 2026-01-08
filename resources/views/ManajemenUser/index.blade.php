@@ -4,6 +4,7 @@
     <div class="flex flex-col gap-y-10 mx-auto w-[90%]">
 
         <div class="flex flex-col justify-between items-start md:items-center gap-4 my-2 w-full mx-auto">
+            
             {{-- Tombol Kembali (Style Baru: Minimalis & Pakai Ikon) --}}
             <a href="{{ route('dashboard.index') }}" 
                class="group inline-flex w-full items-center gap-x-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium text-sm">
@@ -15,20 +16,6 @@
                 Kembali ke Dashboard
             </a>
 
-            <h1 class="text-3xl font-bold text-slate-700">MANAJEMEN USER</h1>
-
-            <span class="hidden md:block w-[150px]"></span>
-        </div>
-       
-
-        {{-- form import --}}
-        <form action="{{ route('karyawan.import') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-
-            <div class="">
-                <label for=""></label>
-                <input type="file" name="file"
-                class="">
             {{-- Judul Halaman --}}
             <div class="flex justify-between w-full">
                 <h1 class="text-3xl font-bold text-gray-800">Daftar Karyawan</h1>
@@ -37,8 +24,11 @@
                 </a>
             </div>
         </div>
+       
 
-
+        {{-- form import --}}
+        <form action="{{ route('karyawan.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
         {{-- cards --}}
         <div class="space-y-5">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">

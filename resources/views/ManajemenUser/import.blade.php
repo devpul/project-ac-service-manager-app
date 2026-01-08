@@ -12,7 +12,7 @@
                 Kembali ke Daftar Karyawan
             </a>
 
-        <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <form action="{{ route('karyawan.import') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>

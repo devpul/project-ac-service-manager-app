@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_karyawan')->nullable();
             $table->string('tugas_karyawan')->nullable();
             $table->enum('absen', ['HADIR', 'IZIN', 'SAKIT', 'ALPA'])->nullable();
             $table->dateTime('jadwal_karyawan')->nullable();

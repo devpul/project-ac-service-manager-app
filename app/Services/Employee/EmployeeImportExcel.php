@@ -21,7 +21,7 @@ class EmployeeImport implements OnEachRow, WithHeadingRow
         ]);
 
         $karyawan = Karyawan::updateOrCreate([
-
+            
         ]);
 
 
