@@ -15,13 +15,12 @@
 
             <h1 class="text-3xl font-bold text-slate-700">MANAJEMEN USER</h1>
 
-<<<<<<< Updated upstream
             <span class="hidden md:block w-[150px]"></span>
         </div>
        
 
         {{-- form import --}}
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('karyawan.import') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="">
@@ -33,8 +32,6 @@
             class="bg-green-100 border text-green-500 px-3 py-1 rounded-full">Import</button>
         </form>
 
-=======
->>>>>>> Stashed changes
         {{-- cards --}}
         <div class="space-y-5">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10">
