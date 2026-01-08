@@ -14,7 +14,8 @@ class MaterialService extends Model
         'nama_toko',
         'nama_pic',
         'pic_telepon',
-        'jadwal_visit'
+        'jadwal_visit',
+        'status'
     ];
 
     public $casts = [

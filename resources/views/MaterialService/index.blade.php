@@ -85,17 +85,29 @@
                             </div>
                         @else
                             <div class="px-6 py-4 bg-gray-50/50 border-t border-gray-100 flex gap-3 justify-end">
-                                <a href="{{ route('material.edit', $material->id) }}" class="text-green-600 hover:text-white hover:bg-green-500 border border-green-500 font-medium px-4 py-1.5 rounded-lg transition-colors text-sm">
-                                    Selesai
-                                </a>
-
-                                <form action="{{ route('material.destroy', $material->id) }}" method="POST" class="flex-1 md:flex-none">
+                                @if ($material->status === 'null')
+                                <form action="{{ route('material.status', $material->id) }}" method="POST" class="flex gap-x-2">
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus?')" class="text-red-600 hover:text-white hover:bg-red-500 border border-red-500 font-medium px-4 py-1.5 rounded-lg transition-colors text-sm">
+                                    @method('PUT')
+    
+                                    <button type="submit" name="status" value="selesai" class="text-green-600 hover:text-white hover:bg-green-500 border border-green-500 font-medium px-4 py-1.5 rounded-lg transition-colors text-sm">
+                                        Selesai
+                                    </button>
+                                    
+                                    <button type="submit" name="status" value="tidak selesai" class="text-red-600 hover:text-white hover:bg-red-500 border border-red-500 font-medium px-4 py-1.5 rounded-lg transition-colors text-sm">
                                         Tidak Selesai
                                     </button>
                                 </form>
+                                @elseif ($material->status === 'selesai')
+                                <a class="text-white bg-green-500 border border-green-500 font-medium px-4 py-1.5 rounded-lg transition-colors text-sm">
+                                    Selesai
+                                </a>
+                                
+                                @elseif ($material->status === 'tidak selesai')
+                                <a class="text-white bg-red-500 border border-red-500 font-medium px-4 py-1.5 rounded-lg transition-colors text-sm">
+                                    Tidak Selesai
+                                </a>
+                                @endif
                             </div>
                         @endif
                         
