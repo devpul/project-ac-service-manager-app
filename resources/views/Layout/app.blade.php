@@ -59,6 +59,29 @@
     width:50rem;
 }
 
+/* Responsif: Menghilangkan ukuran kaku */
+.fc-view-harness, .fc {
+    height: auto !important; /* Biar tinggi menyesuaikan konten */
+    min-height: 30rem; /* Beri batas minimal */
+    width: 100%; /* Full di layar HP */
+    max-width: 1000px; /* Batas maksimal di PC */
+    margin:auto;
+}
+
+/* Mengatur ukuran teks event di HP agar tidak meluber */
+@media (max-width: 640px) {
+    .fc .fc-toolbar-title {
+        font-size: 1.2rem !important; /* Judul lebih kecil di HP */
+    }
+    .fc .fc-toolbar {
+        flex-direction: column; /* Toolbar tumpuk vertikal di HP */
+        gap: 0.5rem;
+    }
+    .fc-event-title {
+        font-size: 0.75rem; /* Teks event lebih kecil */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -79,8 +102,7 @@
     @elseif (session('error'))
         <script>
             Swal.fire({
-                icon: 'danger',
-                title: 'Selamat Datang "{{ Auth::user()->username }}"👋',
+                icon: 'warning',
                 text: "{{ session(key: 'error') }}",
                 showConfirmButton: false,
                 timer: 3000

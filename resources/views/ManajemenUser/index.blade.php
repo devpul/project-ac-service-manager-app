@@ -3,12 +3,14 @@
 @section('content')
     <div class="flex flex-col gap-y-10 mx-auto w-[90%]">
 
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <a href="{{ route('dashboard.index') }}"
-                class="group text-gray-500 text-sm hover:text-blue-500 transition duration-300 flex items-center font-semibold">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
-                class="size-6 group-hover:-translate-x-1 transition duration-300 mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        <div class="flex flex-col justify-between items-start md:items-center gap-4 my-2 w-full mx-auto">
+            {{-- Tombol Kembali (Style Baru: Minimalis & Pakai Ikon) --}}
+            <a href="{{ route('dashboard.index') }}" 
+               class="group inline-flex w-full items-center gap-x-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium text-sm">
+                {{-- Ikon Panah Kiri SVG --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
+                     class=" w-5 h-5 group-hover:-translate-x-1 transition-transform duration-200">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
                 Kembali ke Dashboard
             </a>
@@ -27,10 +29,15 @@
                 <label for=""></label>
                 <input type="file" name="file"
                 class="">
+            {{-- Judul Halaman --}}
+            <div class="flex justify-between w-full">
+                <h1 class="text-3xl font-bold text-gray-800">Daftar Karyawan</h1>
+                <a href="{{ route('karyawan.create') }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-4 rounded-full shadow transition duration-300">
+                    Import
+                </a>
             </div>
-            <button type="submit"
-            class="bg-green-100 border text-green-500 px-3 py-1 rounded-full">Import</button>
-        </form>
+        </div>
+
 
         {{-- cards --}}
         <div class="space-y-5">
@@ -44,18 +51,18 @@
 
                         <div class="grid grid-cols-2 p-5 border-b border-gray-200">
                             <div class="space-y-1">
-                                <span class="block font-semibold text-sm text-gray-500">📅 JADWAL</span>
+                                <span class="block font-semibold text-sm text-gray-500">📅 TANGGAL</span>
                                 <span class="block font-semibold text-sm text-justify"> {{ $karyawan->jadwal_karyawan->format('d M Y') }}</span>
                             </div>
                             <div class="space-y-1">
-                                <span class="block font-semibold text-sm text-gray-500">⏲ JADWAL</span>
+                                <span class="block font-semibold text-sm text-gray-500">⏲ JAM MULAI</span>
                                 <span class="block font-semibold text-sm text-justify">{{ $karyawan->jadwal_karyawan->format('H.i') }} WIB</span>
                             </div>
                             
                         </div>
 
                         <div class="p-5 border-b border-gray-200 space-y-2">
-                            <span class="block font-semibold text-sm text-gray-500">TUGAS</span>
+                            <span class="block font-semibold text-sm text-gray-500">📝 TUGAS</span>
                             <span class="block  text-md italic text-justify">{{ $karyawan->tugas_karyawan }}</span>
                         </div>
                         

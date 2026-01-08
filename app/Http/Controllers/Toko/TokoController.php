@@ -22,7 +22,7 @@ class TokoController extends Controller
 
             $rulesStore = [
                 'site'              =>  'required|integer|unique:tokos,site',
-                'site_description'  =>  'required|string',
+                'site_descr'        =>  'required|string',
                 'store_type'        =>  'required|string',
                 'go_date'           =>  'required|date',
                 'province'          =>  'required|string',
@@ -32,8 +32,8 @@ class TokoController extends Controller
             ];
 
             $rulesUpdate = [
-                'site'              =>  'sometimes|integer|unique:tokos,site',
-                'site_description'  =>  'sometimes|string',
+                'site'              =>  'sometimes|integer',
+                'site_descr'        =>  'sometimes|string',
                 'store_type'        =>  'sometimes|string',
                 'go_date'           =>  'sometimes|date',
                 'province'          =>  'sometimes|string',
@@ -63,7 +63,7 @@ class TokoController extends Controller
 
         Excel::import(new ImportExcel, $request->file);
         
-        return back()->with('success', 'Import berhasil');
+        return redirect()->route('toko.index')->with('success', 'Import berhasil');
     }
 
     public function store(Request $request)
@@ -76,7 +76,7 @@ class TokoController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+    {   
         $validatedData = $this->validateToko($request, 'updateToko');
         if (!is_array($validatedData)) return $validatedData;
 
@@ -104,7 +104,7 @@ class TokoController extends Controller
     
     public function create()
     {
-        return view('Toko.create');
+        return view('Toko.import');
     }
 
     public function edit($id)
@@ -114,18 +114,18 @@ class TokoController extends Controller
         return view('Toko.edit', ['toko' => $toko]);
     }
 
-    public function exportPdf(Request $request)
-    {
-        $filename = 'testing.pdf';
-        $html = '<h1>halo</h1>';
+    // public function exportPdf(Request $request)
+    // {
+    //     $filename = 'testing.pdf';
+    //     $html = '<h1>halo</h1>';
 
-        return PdfService::download($html, $filename);
-    }
+    //     return PdfService::download($html, $filename);
+    // }
 
-    public function exportExcel(Request $request)
-    {
-        $filename = 'laporan.xlsx';
+    // public function exportExcel(Request $request)
+    // {
+    //     $filename = 'laporan.xlsx';
 
-        return Excel::download(new ExceLService, $filename);
-    }
+    //     return Excel::download(new ExceLService, $filename);
+    // }
 }

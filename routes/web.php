@@ -32,6 +32,7 @@ Route::middleware('auth')->prefix('jenis-dan-tipe-ac')->group(function(){
     Route::get('/create', [ACController::class, 'create'])->name('ac.create');
     Route::post('/import', [ACController::class, 'import'])->name('ac.import');
     Route::get('/edit/{id}', [ACController::class, 'edit'])->name('ac.edit');
+    Route::put('/update/{id}', [ACController::class, 'update'])->name('ac.update');
     Route::delete('/{id}', [ACController::class, 'destroy'])->name('ac.destroy');
 });
 Route::middleware('auth')->prefix('toko')->group(function(){
@@ -41,7 +42,7 @@ Route::middleware('auth')->prefix('toko')->group(function(){
     Route::put('/update/{id}', [TokoController::class, 'update'])->name('toko.update');
     Route::get('/export/pdf', [TokoController::class, 'exportPdf'])->name('toko.export_pdf');
     Route::get('/export/excel', [TokoController::class, 'exportExcel'])->name('toko.export_excel');
-    Route::post('/import/excel', [TokoController::class, 'importExcel'])->name('toko.import_excel');
+    Route::post('/import/excel', [TokoController::class, 'importExcel'])->name('toko.import');
     Route::delete('/destroy/{id}', [TokoController::class, 'destroy'])->name('toko.destroy');
 });
 
@@ -59,10 +60,12 @@ Route::middleware('auth')->prefix('gaji-karyawan')->group(function() {
 
 Route::middleware('auth')->prefix('detail-akun')->group(function() {
     Route::get('/', [DetailAkunController::class, 'index'])->name('detail.index');
+    Route::put('/', [DetailAkunController::class, 'update'])->name('detail.update');
 });
 
 Route::middleware('auth')->prefix('material-service')->group(function(){
     Route::get('/', [MaterialServiceController::class, 'index'])->name('material.index');
+    Route::get('/create', [MaterialServiceController::class, 'create'])->name('material.create');
     Route::get('/{id}', [MaterialServiceController::class, 'edit'])->name('material.edit');
     Route::put('/{id}', [MaterialServiceController::class, 'update'])->name('material.update');
     Route::delete('/{id}', [MaterialServiceController::class, 'destroy'])->name('material.destroy');

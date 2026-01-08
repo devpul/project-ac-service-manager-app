@@ -111,7 +111,7 @@
                 </a>
             </div>
 
-            <p class="mt-12 text-gray-400 text-sm font-medium tracking-widest uppercase">Management System v1.0</p>
+            <p class="mt-12 text-gray-400 text-sm font-medium tracking-widest uppercase text-center">© 2025 PT HIGO PHOTONICS. <br class="md:hidden"> All rights reserved.</p>
         </div>
     </div>
 

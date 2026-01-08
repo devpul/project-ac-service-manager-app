@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Kalender;
 
 use App\Models\Kalender;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,13 +16,12 @@ class KalenderController extends Controller
     
     public function index()
     {
-        $kalender = Kalender::get();
+        $karyawans = Karyawan::get();
 
-        return $kalender->map(function($item) {
+        return $karyawans->map(function($karyawan) {
             return [
-                'title' =>  $item->title,
-                'start' =>  $item->start,
-                'end'   =>  $item->end,
+                'title' =>  $karyawan->tugas_karyawan,
+                'start' =>  $karyawan->jadwal_karyawan,
             ];
         });
     }
