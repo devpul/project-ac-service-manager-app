@@ -35,7 +35,7 @@
                 @forelse ($karyawans as $karyawan)
                     <div class="overflow-hidden flex flex-col bg-white rounded-xl shadow border border-gray-200">
                         <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 p-5 flex justify-between">
-                            <span class="text-xl text-white font-bold">👨‍💼 {{ $karyawan->nama_karyawan }}</span>
+                            <span class="text-xl text-white font-bold">👨‍💼 {{ $karyawan->user->username }}</span>
                             <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="text-black font-semibold bg-yellow-500 px-2 py-1 rounded">Edit</a>
                         </div>
 

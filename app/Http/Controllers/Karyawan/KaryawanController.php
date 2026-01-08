@@ -13,8 +13,8 @@ class KaryawanController extends Controller
     {   
         $user = Auth::user()->role_id;
         
-        if ($user !== 3) {
-            $karyawans = Karyawan::get();
+        if ($user !== 3) { // karyawan
+            $karyawans = Karyawan::with('user')->get();
         } else {
             $karyawans = null;
         }
