@@ -19,6 +19,19 @@ class MaterialServiceController extends Controller
         Excel::import(new MaterialServiceImportExcel, $request->file);
     }
 
+    public function statusService(Request $request, $id)
+    {
+        $service = MaterialService::find($id);
+
+        $service->update([
+            'status'    =>  $request->status
+        ]); 
+
+        $status = ucfirst($service->status) ;
+
+        return back()->with('Tugas ' . $status);
+    }
+
     public function update(Request $request, $id) {
 
         $request->validate([
